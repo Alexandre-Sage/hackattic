@@ -39,7 +39,7 @@ impl Answer {
             .seek(SeekFrom::Current(2))
             .expect("Failed to seek past padding bytes");
         // After int (4) + uint (4) + short (2) = 10 bytes.
-        // To align the next 4-byte float to a 4-byte boundary, 2 bytes of padding are needed.
+        // To align the next 4 byte float to a 4byte bound, 2 bytes of padding are needed.
         let float = cursor
             .read_f32::<LittleEndian>()
             .expect("Cannot read 'float' as f32");

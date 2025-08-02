@@ -5,7 +5,6 @@ use byteorder::{BigEndian, LittleEndian, NetworkEndian, ReadBytesExt};
 use log::{Level, log_enabled};
 use serde::{Deserialize, Serialize};
 
-// https://hackattic.com/challenges/help_me_unpack/problem?access_token=9fe44043cb8a26d1
 const CHALLENGE_NAME: &str = "help_me_unpack";
 
 #[derive(Debug, Deserialize)]
@@ -40,6 +39,7 @@ impl Answer {
             .expect("Failed to seek past padding bytes");
         // After int (4) + uint (4) + short (2) = 10 bytes.
         // To align the next 4 byte float to a 4byte bound, 2 bytes of padding are needed.
+        // as mentioned in the problem In case you're wondering, we're using 4 byte ints, so everything is in the context of a 32-bit platform.
         let float = cursor
             .read_f32::<LittleEndian>()
             .expect("Cannot read 'float' as f32");
@@ -71,6 +71,5 @@ async fn main() -> anyhow::Result<()> {
     let answer = Answer::new(&decoded).await;
     let answer = api.solve(answer).await?;
     println!("{:#?}", answer);
-    // dbg!(str::from_utf8(&decoded).unwrap());
     Ok(())
 }

@@ -1,0 +1,14 @@
+[tasks.mini_miner]
+command = "cargo"
+args = ["run", "-p", "mini-miner"]
+
+[tasks.help_me_unpack]
+command = "cargo"
+args = ["run", "-p", "help_me_unpack"]
+
+[tasks.backup_restore]
+script = [
+	"source ./.env",
+	"./backup_restore/challenge.sh"
+]
+

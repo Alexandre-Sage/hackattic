@@ -1,15 +1,10 @@
 use futures::{SinkExt, StreamExt};
 use helpers::HackatticApi;
-use rustls::crypto::CryptoProvider;
 use serde::{Deserialize, Serialize};
-use tokio::{
-    io::AsyncReadExt,
-    net::{TcpListener, TcpSocket, TcpStream},
-    time::Instant,
-};
+use tokio::time::Instant;
 use tokio_tungstenite::{
-    WebSocketStream, connect_async,
-    tungstenite::{Message, client::IntoClientRequest},
+    connect_async,
+    tungstenite::client::IntoClientRequest,
 };
 
 const CHALLENGE_NAME: &str = "websocket_chit_chat";

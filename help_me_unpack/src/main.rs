@@ -1,8 +1,7 @@
 use std::io::{Cursor, Seek, SeekFrom};
 
 use base64::prelude::*;
-use byteorder::{BigEndian, LittleEndian, NetworkEndian, ReadBytesExt};
-use log::{Level, log_enabled};
+use byteorder::{LittleEndian, NetworkEndian, ReadBytesExt};
 use serde::{Deserialize, Serialize};
 
 const CHALLENGE_NAME: &str = "help_me_unpack";

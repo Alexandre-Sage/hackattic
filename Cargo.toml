@@ -1,6 +1,6 @@
 [workspace]
 resolver = "1"
-members = [ "help_me_unpack", "helpers","mini-miner"]
+members = [ "help_me_unpack", "helpers","mini-miner", "websocket_chit_chat"]
 
 [workspace.dependencies]
 anyhow = "1.0.98"
